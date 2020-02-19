@@ -12,7 +12,14 @@ item_list_dict = {
   "6b47 ratnik-bsh helmet": 0,
   "Pack of sugar": 0,
    "Lab. Red keycard": 0,
-  "Military cable": 0
+  "Military cable": 0,
+  "Paracord": 0,
+  "Corrugated hose": 0,
+  "Gas analyzer": 0,
+  "SSD drive": 0,
+  "Military COFDM wireless Signal Transmitter": 0,
+  "Wires": 0,
+  "Car battery": 0,
   }
 
 
@@ -28,8 +35,11 @@ def mouseMovement(itemname):
     pyautogui.click()
     pyautogui.hotkey('ctrl', 'a')
     pyautogui.typewrite(itemname, interval=0.07)
-    pyautogui.moveTo(120, 160)
+    pyautogui.hotkey('space')
     time.sleep(1)
+    pyautogui.hotkey('backspace')
+    time.sleep(1)
+    pyautogui.moveTo(120, 160)
     pyautogui.click()
     pyautogui.hotkey('F5')
     time.sleep(2)
