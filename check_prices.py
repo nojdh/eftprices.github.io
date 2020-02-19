@@ -20,6 +20,22 @@ item_list_dict = {
   "Military COFDM wireless Signal Transmitter": 0,
   "Wires": 0,
   "Car battery": 0,
+  "Silicone tube": 0,
+  "Chainlet": 0,
+  "AI-2 medikit": 0,
+  "Zarya stun grenade": 0,
+  "T H I C C Weapon case": 0,
+  "Meds case": 0,
+  "Items case": 0,
+  "Magazine case": 0,
+  "5.56x45 mm M995": 0,
+  "5.56x45 mm 55 FMJ": 0,
+  "5.56x45 mm 55 HP": 0,
+  "5.56x45 mm M855": 0,
+  "5.56x45 mm M855A1": 0,
+  "5.56x45 mm M856": 0,
+  "5.56x45 mm M856A1": 0,
+  "5.56x45 mm Mk 244 Mod 0": 0,
   }
 
 
@@ -27,14 +43,14 @@ def ocr_core(filename):
     image = cv2.imread(filename)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     imagem = cv2.bitwise_not(image)
-    text = pytesseract.image_to_string(imagem, lang = 'Bender', config='outputbase digits')
+    text = pytesseract.image_to_string(imagem, lang='Bender', config='outputbase digits tessedit_char_whitelist=0123456789')
     return text
 
 def mouseMovement(itemname):
     pyautogui.moveTo(100, 120)
     pyautogui.click()
     pyautogui.hotkey('ctrl', 'a')
-    pyautogui.typewrite(itemname, interval=0.07)
+    pyautogui.typewrite(itemname, interval=0.01)
     pyautogui.hotkey('space')
     time.sleep(1)
     pyautogui.hotkey('backspace')
@@ -56,6 +72,9 @@ def ocrTextat(itemname):
     value1 = ocr_core(f'{itemname}.png').replace(" ", "")[:-1]
     value2 = ocr_core(f'{itemname}2.png').replace(" ", "")[:-1]
     value3 = ocr_core(f'{itemname}3.png').replace(" ", "")[:-1]
+    value1.replace(".","0")
+    value2.replace(".","0")
+    value3.replace(".","0")
     try:
         data = int(value1) + int(value2) + int(value3)
     except ValueError:
@@ -77,11 +96,8 @@ def main():
     print(item_list_dict)
     with open('items.json', 'w') as fp:
         json.dump(item_list_dict, fp, indent=4, sort_keys=True)
-    winsound.Beep(500, 300)
-    winsound.Beep(500, 300)
-    winsound.Beep(500, 300)
-
+    winsound.Beep(500, 100)
+    winsound.Beep(500, 100)
+    winsound.Beep(500, 100)
 if __name__ == "__main__":
     main()
-
-
