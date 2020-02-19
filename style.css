@@ -1,0 +1,52 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+#container {
+    padding-top: 20vh;
+    margin: 0 auto;
+    width: 50%;
+}
+
+#searchInput {
+    text-align: center;
+    padding: 2em;
+    width: 89%;
+    font-size: 16px; /* Increase font-size */
+    margin: 1em; /* Add some padding */
+    border: none;
+  }
+
+  #item_list {
+    transition: 0.2s;
+    list-style-type: none;
+    width: 90%;
+  }
+
+  #item_list li {
+    vertical-align: middle;
+    padding: 1em !important;
+    border: 2px solid #ddd; /* Add a border to all links */
+    margin-top: -2px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Grey background color */
+    padding: 0.4em; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 18px; /* Increase the font-size */
+    width: 100%;
+    color: black; /* Add a black text color */
+  }
+
+  #item_list :hover {
+    transition: 0.2s;
+    background-color: #eee; /* Add a hover effect to all links, except for headers */
+  }
+
+  #itemprice {
+      float: right;
+  }
+
+footer {
+    margin: 0 auto;
+    font-size: 0.7em;
+    width: 100%;
+    text-align: center;
+  }
