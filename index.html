@@ -1,64 +1,18 @@
-
 <!DOCTYPE html>
-<html>
- <head>
-  <title>EFT Flea Market Prices</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
- <body>
-
-	<div id="container">
- <input type="text" class="form-control" id="searchInput" onkeyup="searchFunction()" placeholder="Search for item names"/>
-  <ul class="list-group" id="item_list"/>
-</div>
-<footer id="foten"></footer>
- </body>
+<html lang="en">
+    <head>
+        <title>EFT Flea Market Prices</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="container">
+            <input type="text" class="form-control" id="searchInput" onkeyup="searchFunction()" placeholder="Search for item names"/>
+            <ul class="list-group" id="item_list"></ul>
+            <footer id="foten"></footer>
+        </div>
+    </body>
 </html>
-<script>
-  function searchFunction() {
-    input = document.getElementById('searchInput');
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("item_list");
-    li = ul.getElementsByTagName('li');
-
-    for (i = 0; i < li.length; i++) {
-      p = li[i].getElementsByTagName("a")[0];
-      txtValue = p.textContent;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        li[i].style.display = "";
-      } else {
-        li[i].style.display = "none";
-      }
-    }
-  }
-
-	$.getJSON( "items.json", function( data ) {
-  var items = [];
-  $.each( data, function( key, val ) {
-    items.push("<li class=\"list-group-item\"><a id=\"itemname\">" + key.toUpperCase() + "</a> <a id=\"itemprice\">"+ val + " ₽</a></li>");
-    document.getElementById("item_list").innerHTML = items.join('');
-  });
-  $({
-  }).appendTo( "body" );
-  });
-
- function fetchHeader(url, wch) {
-    try {
-        var req=new XMLHttpRequest();
-        req.open("HEAD", url, false);
-        req.send(null);
-        if(req.status== 200){
-            return req.getResponseHeader(wch);
-        }
-        else return false;
-    } catch(er) {
-        return er.message;
-    }
-}
-
-var datum = fetchHeader('items.json','Last-Modified');
-document.getElementById("foten").innerHTML = "Last updated " + datum;
-</script>
