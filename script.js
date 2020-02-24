@@ -39,5 +39,8 @@
     }
 }
 
-var datum = fetchHeader('items.json','Last-Modified');
-document.getElementById("foten").innerHTML = "Last updated " + datum;
+window.onload = function () {
+    var datum = fetchHeader('items.json','Last-Modified');
+    document.getElementById("foten").innerHTML = "Last updated " + datum;
+}
+
